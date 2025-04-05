@@ -46,7 +46,6 @@ def start(update: Update, context: CallbackContext) -> None:
         creator_mention = "[@JaatCoderX🧑‍💻](https://t.me/JaatCoderX)"
         
         caption = (
-            
             f"🎯 𝗪𝗲𝗹𝗰𝗼𝗺𝗲, {user_mention}! 𝗜'𝗺 𝘆𝗼𝘂𝗿 𝗾𝘂𝗶𝘇 𝗰𝗼𝗺𝗽𝗮𝗻𝗶𝗼𝗻.\n\n"
             "⚡ 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦:\n"
             "➤ /start - 𝗦𝗵𝗼𝘄 𝘁𝗵𝗶𝘀 𝗺𝗲𝘀𝘀𝗮𝗴𝗲\n"
@@ -59,7 +58,11 @@ def start(update: Update, context: CallbackContext) -> None:
             "✓ 𝟏𝟎𝟎+ 𝐌𝐮𝐥𝐭𝐢𝐜𝐡𝐨𝐢𝐜𝐞 𝐐𝐮𝐢𝐳𝐳𝐞𝐬\n"
             "✓ 𝐀𝐝𝐯𝐚𝐧𝐜𝐞𝐝 𝐓𝐢𝐦𝐞𝐫𝐬 & 𝐏𝐞𝐧𝐚𝐥𝐭𝐢𝐞𝐬\n"
             "✓ 𝐏𝐫𝐨𝐟𝐞𝐬𝐬𝐢𝐨𝐧𝐚𝐥 𝐏𝐃𝐅 𝐑𝐞𝐬𝐮𝐥𝐭𝐬\n"
-            "✓ 𝐔𝐧𝐥𝐢𝐦𝐢𝐭𝐞𝐝 𝐈𝐦𝐩𝐨𝐫𝐭/𝐄𝐱𝐩𝐨𝐫𝐭\n\n"
+            "✓ 𝐔𝐧𝐥𝐢𝐦𝐢𝐭𝐞𝐝 𝐈𝐦𝐩𝐨𝐫𝐭/𝐄𝐱𝐩𝐨𝐫𝐭\n"
+            "✓ 𝐏𝐨𝐥𝐥 𝐓𝐨 𝐐𝐮𝐢𝐳 𝐂𝐨𝐧𝐯𝐞𝐫𝐬𝐢𝐨𝐧\n"
+            "✓ 𝐌𝐚𝐫𝐚𝐭𝐡𝐨𝐧 𝐐𝐮𝐢𝐳 𝐌𝐨𝐝𝐞\n\n"
+            "🚀 𝗨𝗣𝗖𝗢𝗠𝗜𝗡𝗚 𝗙𝗘𝗔𝗧𝗨𝗥𝗘𝗦:\n"
+            "🔜 𝐈𝐦𝐩𝐨𝐫𝐭 𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧𝐬 𝐅𝐫𝐨𝐦 𝐏𝐃𝐅\n\n"
             f"✨ 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫: {creator_mention} ✨"
         )
         
