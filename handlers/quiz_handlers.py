@@ -35,35 +35,50 @@ logger = logging.getLogger(__name__)
 active_sessions = {}
 
 def start(update: Update, context: CallbackContext) -> None:
-    """Send a welcome message when the command /start is issued."""
+    """Send a welcome message with image when the command /start is issued."""
     try:
         user = update.effective_user
         
-        # Create a styled welcome message with fancy Unicode borders
+        # First, send the welcome image
+        welcome_image_url = "https://i.ibb.co/CsB6QYM/picture-ink.jpg"  # Fixed URL format
+        
+        # Try to send the image with a caption
+        try:
+            update.message.reply_photo(
+                photo=welcome_image_url,
+                caption=f"Welcome to Advance Quiz Bot, {user.first_name}! 🎓"
+            )
+        except Exception as img_error:
+            logging.error(f"Error sending welcome image: {str(img_error)}")
+            # If image sending fails, continue with just the text
+            pass
+        
+        # Create a styled welcome message with fancy double-line borders
+        # Using special Unicode characters for "bold-like" text
         welcome_message = (
-            "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
-            "┃       🎓  ADVANCE QUIZ BOT  🎓      ┃\n"
-            "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n\n"
-            f"Hello {user.first_name}! I'm your interactive quiz companion.\n\n"
-            "📋 Commands:\n"
+            "╔══════════════════════════════════╗\n"
+            "║       🎓  𝗔𝗗𝗩𝗔𝗡𝗖𝗘 𝗤𝗨𝗜𝗭 𝗕𝗢𝗧  🎓      ║\n"
+            "╚══════════════════════════════════╝\n\n"
+            f"𝗛𝗲𝗹𝗹𝗼 {user.first_name}! I'm your interactive quiz companion.\n\n"
+            "📋 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀:\n"
             "• /start - Show this welcome message\n"
             "• /help - Get help information\n"
             "• /list - List available quizzes\n"
             "• /take [quiz_id] - Start a quiz\n"
             "• /cancel - Cancel operation\n"
             "• /results - Get quiz results as PDF\n\n"
-            "🚀 Key Features:\n"
+            "🚀 𝗞𝗲𝘆 𝗙𝗲𝗮𝘁𝘂𝗿𝗲𝘀:\n"
             "• 📝 Multiple choice quizzes\n"
             "• ⏱️ Custom time limits per question\n"
             "• 📊 Negative marking for wrong answers\n"
             "• 📑 PDF generation of results\n"
             "• 📤 Import/Export quizzes\n\n"
-            "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
-            "┃    👨‍💻 Created by: ⭐ @JaatCoderX ⭐    ┃\n"
-            "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n\n"
+            "╔══════════════════════════════════╗\n"
+            "║    👨‍💻 Created by: ⭐ @𝗝𝗮𝗮𝘁𝗖𝗼𝗱𝗲𝗿𝗫 ⭐    ║\n"
+            "╚══════════════════════════════════╝\n\n"
             "Use /list to see available quizzes!"
         )
-        # Use plain text for compatibility
+        # Send the text welcome message
         update.message.reply_text(welcome_message)
     except Exception as e:
         import logging
