@@ -35,12 +35,12 @@ logger = logging.getLogger(__name__)
 active_sessions = {}
 
 def start(update: Update, context: CallbackContext) -> None:
-    """Send a simple welcome message when the command /start is issued."""
+    """Send a welcome message with an image when the command /start is issued."""
     try:
         user = update.effective_user
 
-        # Optional: send welcome image
-        welcome_image_url = "https://i.ibb.co/CsB6QYM/picture-ink.jpg"
+        # Send the welcome image
+        welcome_image_url = "https://i.imgur.com/jFeArfJ.jpeg"
         try:
             update.message.reply_photo(
                 photo=welcome_image_url,
