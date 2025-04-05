@@ -39,33 +39,32 @@ def start(update: Update, context: CallbackContext) -> None:
     try:
         user = update.effective_user
         
-        # Create a styled welcome message with HTML formatting
+        # Create a styled welcome message with fancy Unicode borders
         welcome_message = (
-            "<pre>╔═══════════════════════════════╗</pre>\n"
-            "<b>🎓 TELEGRAM QUIZ BOT 🎓</b>\n"
-            "<pre>╚═══════════════════════════════╝</pre>\n\n"
-            f"Hello <b>{user.first_name}</b>! I'm your interactive quiz companion.\n\n"
-            "<b>🚀 Key Features:</b>\n"
-            "• <b>📋</b> Multiple choice quizzes\n"
-            "• <b>⏱️</b> Custom time limits per question\n"
-            "• <b>📊</b> Negative marking for wrong answers\n"
-            "• <b>📑</b> PDF generation of results\n"
-            "• <b>📤</b> Import/Export quizzes\n\n"
-            "<b>📝 Commands:</b>\n"
+            "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
+            "┃       🎓  ADVANCE QUIZ BOT  🎓      ┃\n"
+            "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n\n"
+            f"Hello {user.first_name}! I'm your interactive quiz companion.\n\n"
+            "📋 Commands:\n"
             "• /start - Show this welcome message\n"
             "• /help - Get help information\n"
             "• /list - List available quizzes\n"
-            "• /take [quiz_id] - Take a specific quiz\n"
+            "• /take [quiz_id] - Start a quiz\n"
             "• /cancel - Cancel operation\n"
             "• /results - Get quiz results as PDF\n\n"
-            "<pre>╔═══════════════════════════════╗</pre>\n"
-            "👨‍💻 <b>Created by:</b> <i>@JaatCoderX</i>\n"
-            "<pre>╚═══════════════════════════════╝</pre>\n\n"
+            "🚀 Key Features:\n"
+            "• 📝 Multiple choice quizzes\n"
+            "• ⏱️ Custom time limits per question\n"
+            "• 📊 Negative marking for wrong answers\n"
+            "• 📑 PDF generation of results\n"
+            "• 📤 Import/Export quizzes\n\n"
+            "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
+            "┃    👨‍💻 Created by: ⭐ @JaatCoderX ⭐    ┃\n"
+            "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n\n"
             "Use /list to see available quizzes!"
         )
-        
-        # Use HTML parsing mode
-        update.message.reply_text(welcome_message, parse_mode=ParseMode.HTML)
+        # Use plain text for compatibility
+        update.message.reply_text(welcome_message)
     except Exception as e:
         import logging
         logging.error(f"Error in start command: {str(e)}")
