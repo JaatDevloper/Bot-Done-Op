@@ -42,7 +42,7 @@ def start(update: Update, context: CallbackContext) -> None:
 
         # Create clickable links for user and creator
         user_mention = f"[{user.first_name}](tg://user?id={user.id})"
-        creator_mention = "[JaatCoderX](https://t.me/JaatCoderX)"
+        creator_mention = "[𝗝𝗮𝗮𝘁𝗖𝗼𝗱𝗲𝗿𝗫🧑‍💻](https://t.me/JaatCoderX)"
 
         caption = (
             "✧･ﾟ: 🎮 𝐀𝐃𝐕𝐀𝐍𝐂𝐄 𝐐𝐔𝐈𝐙 𝐁𝐎𝐓 🎮 :･ﾟ✧\n\n"
@@ -55,11 +55,11 @@ def start(update: Update, context: CallbackContext) -> None:
             "➤ /𝗰𝗮𝗻𝗰𝗲𝗹 - 𝗖𝗮𝗻𝗰𝗲𝗹 𝗾𝘂𝗶𝘇\n"
             "➤ /𝗿𝗲𝘀𝘂𝗹𝘁𝘀 - 𝗚𝗲𝘁 𝗣𝗗𝗙 𝗿𝗲𝘀𝘂𝗹𝘁𝘀\n\n"
             "💎 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗙𝗘𝗔𝗧𝗨𝗥𝗘𝗦:\n"
-            "✓ 𝓜𝓾𝓵𝓽𝓲𝓬𝓱𝓸𝓲𝓬𝓮 𝓠𝓾𝓲𝔃 𝓒𝓸𝓵𝓵𝓮𝓬𝓽𝓲𝓸𝓷\n"
-            "✓ 𝓐𝓭𝓿𝓪𝓷𝓬𝓮𝓭 𝓣𝓲𝓶𝓮𝓻𝓼 & 𝓟𝓮𝓷𝓪𝓵𝓽𝓲𝓮𝓼\n"
-            "✓ 𝓟𝓻𝓸𝓯𝓮𝓼𝓼𝓲𝓸𝓷𝓪𝓵 𝓟𝓓𝓕 𝓡𝓮𝓼𝓾𝓵𝓽𝓼\n"
-            "✓ 𝓤𝓷𝓵𝓲𝓶𝓲𝓽𝓮𝓭 𝓘𝓶𝓹𝓸𝓻𝓽/𝓔𝔁𝓹𝓸𝓻𝓽\n\n"
-            f"✨ 𝐂𝐫𝐞𝐚𝐭𝐞𝐝 𝐁𝐲: {creator_mention} ✨"
+            "✓ 𝟏𝟎𝟎+ 𝐌𝐮𝐥𝐭𝐢𝐜𝐡𝐨𝐢𝐜𝐞 𝐐𝐮𝐢𝐳𝐳𝐞𝐬\n"
+            "✓ 𝐀𝐝𝐯𝐚𝐧𝐜𝐞𝐝 𝐓𝐢𝐦𝐞𝐫𝐬 & 𝐏𝐞𝐧𝐚𝐥𝐭𝐢𝐞𝐬\n"
+            "✓ 𝐏𝐫𝐨𝐟𝐞𝐬𝐬𝐢𝐨𝐧𝐚𝐥 𝐏𝐃𝐅 𝐑𝐞𝐬𝐮𝐥𝐭𝐬\n"
+            "✓ 𝐔𝐧𝐥𝐢𝐦𝐢𝐭𝐞𝐝 𝐈𝐦𝐩𝐨𝐫𝐭/𝐄𝐱𝐩𝐨𝐫𝐭\n\n"
+            f"✨ 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫: {creator_mention} ✨"
         )
 
         update.message.reply_photo(
