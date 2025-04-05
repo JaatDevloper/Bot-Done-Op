@@ -40,9 +40,13 @@ def start(update: Update, context: CallbackContext) -> None:
 
         welcome_image_url = "https://i.imgur.com/jFeArfJ.jpeg"
 
+        # Create clickable links for user and creator
+        user_mention = f"[{user.first_name}](tg://user?id={user.id})"
+        creator_mention = "[JaatCoderX](https://t.me/JaatCoderX)"
+
         caption = (
             "✧･ﾟ: 🎮 𝐀𝐃𝐕𝐀𝐍𝐂𝐄 𝐐𝐔𝐈𝐙 𝐁𝐎𝐓 🎮 :･ﾟ✧\n\n"
-            f"🎯 𝗪𝗲𝗹𝗰𝗼𝗺𝗲, {user.first_name}! 𝗜'𝗺 𝘆𝗼𝘂𝗿 𝗾𝘂𝗶𝘇 𝗰𝗼𝗺𝗽𝗮𝗻𝗶𝗼𝗻.\n\n"
+            f"🎯 𝗪𝗲𝗹𝗰𝗼𝗺𝗲, {user_mention}! 𝗜'𝗺 𝘆𝗼𝘂𝗿 𝗾𝘂𝗶𝘇 𝗰𝗼𝗺𝗽𝗮𝗻𝗶𝗼𝗻.\n\n"
             "⚡ 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦:\n"
             "➤ /𝘀𝘁𝗮𝗿𝘁 - 𝗦𝗵𝗼𝘄 𝘁𝗵𝗶𝘀 𝗺𝗲𝘀𝘀𝗮𝗴𝗲\n"
             "➤ /𝗵𝗲𝗹𝗽 - 𝗛𝗲𝗹𝗽 𝗶𝗻𝗳𝗼\n"
@@ -51,16 +55,17 @@ def start(update: Update, context: CallbackContext) -> None:
             "➤ /𝗰𝗮𝗻𝗰𝗲𝗹 - 𝗖𝗮𝗻𝗰𝗲𝗹 𝗾𝘂𝗶𝘇\n"
             "➤ /𝗿𝗲𝘀𝘂𝗹𝘁𝘀 - 𝗚𝗲𝘁 𝗣𝗗𝗙 𝗿𝗲𝘀𝘂𝗹𝘁𝘀\n\n"
             "💎 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗙𝗘𝗔𝗧𝗨𝗥𝗘𝗦:\n"
-            "✓ 𝟙𝟘𝟘+ 𝕄𝕌𝕃𝕋𝕀ℂℍ𝕆𝕀ℂ𝔼 ℚ𝕌𝕀ℤℤ𝔼𝕊\n"
-            "✓ 𝔸𝕕𝕧𝕒𝕟𝕔𝕖𝕕 𝕋𝕚𝕞𝕖𝕣𝕤 & ℙ𝕖𝕟𝕒𝕝𝕥𝕚𝕖𝕤\n"
-            "✓ ℙ𝕣𝕠𝕗𝕖𝕤𝕤𝕚𝕠𝕟𝕒𝕝 ℙ𝔻𝔽 ℝ𝕖𝕤𝕦𝕝𝕥𝕤\n"
-            "✓ 𝕌𝕟𝕝𝕚𝕞𝕚𝕥𝕖𝕕 𝕀𝕞𝕡𝕠𝕣𝕥/𝔼𝕩𝕡𝕠𝕣𝕥\n\n"
-            "✨ 𝐂𝐫𝐞𝐚𝐭𝐞𝐝 𝐁𝐲: @𝐉𝐚𝐚𝐭𝐂𝐨𝐝𝐞𝐫𝐗 ✨"
+            "✓ 𝓜𝓾𝓵𝓽𝓲𝓬𝓱𝓸𝓲𝓬𝓮 𝓠𝓾𝓲𝔃 𝓒𝓸𝓵𝓵𝓮𝓬𝓽𝓲𝓸𝓷\n"
+            "✓ 𝓐𝓭𝓿𝓪𝓷𝓬𝓮𝓭 𝓣𝓲𝓶𝓮𝓻𝓼 & 𝓟𝓮𝓷𝓪𝓵𝓽𝓲𝓮𝓼\n"
+            "✓ 𝓟𝓻𝓸𝓯𝓮𝓼𝓼𝓲𝓸𝓷𝓪𝓵 𝓟𝓓𝓕 𝓡𝓮𝓼𝓾𝓵𝓽𝓼\n"
+            "✓ 𝓤𝓷𝓵𝓲𝓶𝓲𝓽𝓮𝓭 𝓘𝓶𝓹𝓸𝓻𝓽/𝓔𝔁𝓹𝓸𝓻𝓽\n\n"
+            f"✨ 𝐂𝐫𝐞𝐚𝐭𝐞𝐝 𝐁𝐲: {creator_mention} ✨"
         )
 
         update.message.reply_photo(
             photo=welcome_image_url,
-            caption=caption
+            caption=caption,
+            parse_mode='Markdown'  # Enable Markdown for clickable links
         )
 
     except Exception as e:
