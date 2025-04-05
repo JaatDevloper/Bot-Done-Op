@@ -62,39 +62,57 @@ def admin_command(update: Update, context: CallbackContext) -> None:
         update.message.reply_text("Admin Commands:\n\n/create\n/adminhelp\n/edittime\n/editquestiontime\n/import")
 
 def admin_help(update: Update, context: CallbackContext) -> None:
-    """Show detailed admin help."""
-    user_id = update.effective_user.id
-    
-    # Check if the user is an admin
-    if user_id not in ADMIN_USERS:
-        update.message.reply_text("Sorry, you don't have admin privileges.")
-        return
-    
-    help_text = (
-        "Admin Help\n\n"
-        "Creating a Quiz:\n"
-        "1. Use /create to start creating a quiz\n"
-        "2. Send the quiz title and description in the format: 'Title | Description'\n"
-        "3. Add questions in the format: 'Question text | Option A | Option B | Option C | Option D | CorrectOption(0-3)'\n"
-        "   Note: The correct option is 0-indexed (0 for A, 1 for B, etc.)\n"
-        "4. Use /done when you've added all questions\n"
-        "5. Set the time limit per question in seconds\n"
-        "6. Set the negative marking factor (e.g., 0.25 means -0.25 points for wrong answers)\n\n"
+    """Show detailed admin help with advanced styling."""
+    try:
+        user_id = update.effective_user.id
         
-        "Editing Quiz Times:\n"
-        "- Use /edittime (quiz_id) to change the overall time limit for all questions\n"
-        "- Use /editquestiontime (quiz_id) (question_index) (time_limit) to set a specific time for one question\n"
-        "  Example: /editquestiontime quiz123 2 30\n"
-        "  This sets question #3 (index 2) in quiz 'quiz123' to have a 30-second time limit\n\n"
+        # Check if the user is an admin
+        if user_id not in ADMIN_USERS:
+            update.message.reply_text("𝗦𝗼𝗿𝗿𝘆, 𝘆𝗼𝘂 𝗱𝗼𝗻'𝘁 𝗵𝗮𝘃𝗲 𝗮𝗱𝗺𝗶𝗻 𝗽𝗿𝗶𝘃𝗶𝗹𝗲𝗴𝗲𝘀.")
+            return
         
-        "Importing Quizzes:\n"
-        "- Use /import and then upload a JSON file with quiz data\n"
-        "- The JSON format should match the exported quiz format\n\n"
+        help_text = (
+            "✧･ﾟ: 👑 𝗔𝗗𝗠𝗜𝗡 𝗠𝗔𝗦𝗧𝗘𝗥 𝗚𝗨𝗜𝗗𝗘 👑 :･ﾟ✧\n\n"
+            
+            "🔹 𝗖𝗥𝗘𝗔𝗧𝗜𝗡𝗚 𝗔 𝗤𝗨𝗜𝗭 🔹\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "1️⃣ 𝗦𝘁𝗮𝗿𝘁 𝘄𝗶𝘁𝗵 /create\n"
+            "2️⃣ 𝗦𝗲𝗻𝗱: '𝗧𝗶𝘁𝗹𝗲 | 𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻'\n"
+            "3️⃣ 𝗔𝗱𝗱 𝗾𝘂𝗲𝘀𝘁𝗶𝗼𝗻𝘀:\n"
+            "   '𝗤𝘂𝗲𝘀𝘁𝗶𝗼𝗻 | 𝗢𝗽𝘁𝗶𝗼𝗻 𝗔 | 𝗢𝗽𝘁𝗶𝗼𝗻 𝗕 | 𝗢𝗽𝘁𝗶𝗼𝗻 𝗖 | 𝗢𝗽𝘁𝗶𝗼𝗻 𝗗 | 𝗖𝗼𝗿𝗿𝗲𝗰𝘁(0-3)'\n"
+            "4️⃣ 𝗙𝗶𝗻𝗶𝘀𝗵 𝘄𝗶𝘁𝗵 /done\n"
+            "5️⃣ 𝗦𝗲𝘁 𝘁𝗶𝗺𝗲 𝗹𝗶𝗺𝗶𝘁 𝗳𝗼𝗿 𝗾𝘂𝗲𝘀𝘁𝗶𝗼𝗻𝘀\n"
+            "6️⃣ 𝗦𝗲𝘁 𝗻𝗲𝗴𝗮𝘁𝗶𝘃𝗲 𝗺𝗮𝗿𝗸𝗶𝗻𝗴 (𝗲.𝗴., 0.25)\n\n"
+            
+            "🔹 𝗘𝗗𝗜𝗧𝗜𝗡𝗚 𝗧𝗜𝗠𝗘 𝗟𝗜𝗠𝗜𝗧𝗦 🔹\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "⏱️ 𝗚𝗹𝗼𝗯𝗮𝗹 𝘁𝗶𝗺𝗲 𝗰𝗵𝗮𝗻𝗴𝗲:\n"
+            "   /edittime 𝗾𝘂𝗶𝘇_𝗶𝗱\n\n"
+            "⏱️ 𝗦𝗽𝗲𝗰𝗶𝗳𝗶𝗰 𝗾𝘂𝗲𝘀𝘁𝗶𝗼𝗻 𝘁𝗶𝗺𝗲:\n"
+            "   /editquestiontime 𝗾𝘂𝗶𝘇_𝗶𝗱 𝗾𝘂𝗲𝘀𝘁𝗶𝗼𝗻_𝗶𝗻𝗱𝗲𝘅 𝘁𝗶𝗺𝗲_𝗹𝗶𝗺𝗶𝘁\n"
+            "   𝗘𝘅𝗮𝗺𝗽𝗹𝗲: /editquestiontime quiz123 2 30\n\n"
+            
+            "🔹 𝗜𝗠𝗣𝗢𝗥𝗧/𝗘𝗫𝗣𝗢𝗥𝗧 🔹\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "📤 𝗜𝗺𝗽𝗼𝗿𝘁𝗶𝗻𝗴 𝗤𝘂𝗶𝘇𝘇𝗲𝘀:\n"
+            "   1. 𝗨𝘀𝗲 /import\n"
+            "   2. 𝗨𝗽𝗹𝗼𝗮𝗱 𝗝𝗦𝗢𝗡 𝗳𝗶𝗹𝗲\n\n"
+            
+            "💎 𝗣𝗥𝗢 𝗧𝗜𝗣𝗦 💎\n"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "• 𝗤𝘂𝗲𝘀𝘁𝗶𝗼𝗻 𝗶𝗻𝗱𝗶𝗰𝗲𝘀 𝘀𝘁𝗮𝗿𝘁 𝗮𝘁 0\n"
+            "• 𝗖𝗼𝗿𝗿𝗲𝗰𝘁 𝗼𝗽𝘁𝗶𝗼𝗻𝘀: 0=𝗔, 1=𝗕, 2=𝗖, 3=𝗗\n"
+            "• 𝗧𝗼 𝗰𝗮𝗻𝗰𝗲𝗹 𝗮𝗻𝘆 𝗮𝗱𝗺𝗶𝗻 𝗮𝗰𝘁𝗶𝗼𝗻, 𝘂𝘀𝗲 /cancel\n\n"
+            
+            "✨ 𝗔𝗗𝗠𝗜𝗡 𝗣𝗔𝗡𝗘𝗟 𝗩1.0 ✨"
+        )
         
-        "Note: Question indices start at 0, so the first question has index 0, second has index 1, etc."
-    )
-    
-    update.message.reply_text(help_text)
+        # Simple text reply with no parse_mode to avoid formatting issues
+        update.message.reply_text(help_text)
+        
+    except Exception as e:
+        logging.error(f"Error in admin_help command: {str(e)}")
+        update.message.reply_text("Admin Help: Use /create to make a quiz. Format: 'Question | Option A | Option B | Option C | Option D | Correct(0-3)'")
     
 def create_quiz(update: Update, context: CallbackContext) -> str:
     """Start the quiz creation process."""
