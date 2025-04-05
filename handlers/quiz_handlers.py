@@ -35,33 +35,26 @@ logger = logging.getLogger(__name__)
 active_sessions = {}
 
 def start(update: Update, context: CallbackContext) -> None:
+    """Send a welcome message when the command /start is issued."""
     try:
         user = update.effective_user
-
+        
         welcome_image_url = "https://i.imgur.com/jFeArfJ.jpeg"
-
-        # Create clickable links for user and creator
+        
+        # Create clickable user and creator mentions
         user_mention = f"[{user.first_name}](tg://user?id={user.id})"
-        creator_mention = "[𝗝𝗮𝗮𝘁𝗖𝗼𝗱𝗲𝗿𝗫🧑‍💻](https://t.me/JaatCoderX)"
-
-        # Make commands directly clickable (no "?start=" parameter)
-        start_cmd = "[/𝘀𝘁𝗮𝗿𝘁](https://t.me/JaatCoderXQuiz_Bot/start)"
-        help_cmd = "[/𝗵𝗲𝗹𝗽](https://t.me/JaatCoderXQuiz_Bot/help)"
-        list_cmd = "[/𝗹𝗶𝘀𝘁](https://t.me/JaatCoderXQuiz_Bot/list)"
-        take_cmd = "[/𝘁𝗮𝗸𝗲](https://t.me/JaatCoderXQuiz_Bot/take)"
-        cancel_cmd = "[/𝗰𝗮𝗻𝗰𝗲𝗹](https://t.me/JaatCoderXQuiz_Bot/cancel)"
-        results_cmd = "[/𝗿𝗲𝘀𝘂𝗹𝘁𝘀](https://t.me/JaatCoderXQuiz_Bot/results)"
-
+        creator_mention = "[@JaatCoderX🧑‍💻](https://t.me/JaatCoderX)"
+        
         caption = (
             "✧･ﾟ: 🎮 𝐀𝐃𝐕𝐀𝐍𝐂𝐄 𝐐𝐔𝐈𝐙 𝐁𝐎𝐓 🎮 :･ﾟ✧\n\n"
             f"🎯 𝗪𝗲𝗹𝗰𝗼𝗺𝗲, {user_mention}! 𝗜'𝗺 𝘆𝗼𝘂𝗿 𝗾𝘂𝗶𝘇 𝗰𝗼𝗺𝗽𝗮𝗻𝗶𝗼𝗻.\n\n"
             "⚡ 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦:\n"
-            f"➤ {start_cmd} - 𝗦𝗵𝗼𝘄 𝘁𝗵𝗶𝘀 𝗺𝗲𝘀𝘀𝗮𝗴𝗲\n"
-            f"➤ {help_cmd} - 𝗛𝗲𝗹𝗽 𝗶𝗻𝗳𝗼\n"
-            f"➤ {list_cmd} - 𝗟𝗶𝘀𝘁 𝗾𝘂𝗶𝘇𝘇𝗲𝘀\n"
-            f"➤ {take_cmd} [𝗶𝗱] - 𝗦𝘁𝗮𝗿𝘁 𝗾𝘂𝗶𝘇\n"
-            f"➤ {cancel_cmd} - 𝗖𝗮𝗻𝗰𝗲𝗹 𝗾𝘂𝗶𝘇\n"
-            f"➤ {results_cmd} - 𝗚𝗲𝘁 𝗣𝗗𝗙 𝗿𝗲𝘀𝘂𝗹𝘁𝘀\n\n"
+            "➤ /start - 𝗦𝗵𝗼𝘄 𝘁𝗵𝗶𝘀 𝗺𝗲𝘀𝘀𝗮𝗴𝗲\n"
+            "➤ /help - 𝗛𝗲𝗹𝗽 𝗶𝗻𝗳𝗼\n"
+            "➤ /list - 𝗟𝗶𝘀𝘁 𝗾𝘂𝗶𝘇𝘇𝗲𝘀\n"
+            "➤ /take - 𝗦𝘁𝗮𝗿𝘁 𝗾𝘂𝗶𝘇\n"
+            "➤ /cancel - 𝗖𝗮𝗻𝗰𝗲𝗹 𝗾𝘂𝗶𝘇\n"
+            "➤ /results - 𝗚𝗲𝘁 𝗣𝗗𝗙 𝗿𝗲𝘀𝘂𝗹𝘁𝘀\n\n"
             "💎 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗙𝗘𝗔𝗧𝗨𝗥𝗘𝗦:\n"
             "✓ 𝟏𝟎𝟎+ 𝐌𝐮𝐥𝐭𝐢𝐜𝐡𝐨𝐢𝐜𝐞 𝐐𝐮𝐢𝐳𝐳𝐞𝐬\n"
             "✓ 𝐀𝐝𝐯𝐚𝐧𝐜𝐞𝐝 𝐓𝐢𝐦𝐞𝐫𝐬 & 𝐏𝐞𝐧𝐚𝐥𝐭𝐢𝐞𝐬\n"
@@ -69,15 +62,16 @@ def start(update: Update, context: CallbackContext) -> None:
             "✓ 𝐔𝐧𝐥𝐢𝐦𝐢𝐭𝐞𝐝 𝐈𝐦𝐩𝐨𝐫𝐭/𝐄𝐱𝐩𝐨𝐫𝐭\n\n"
             f"✨ 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫: {creator_mention} ✨"
         )
-
+        
         update.message.reply_photo(
             photo=welcome_image_url,
             caption=caption,
-            parse_mode='Markdown'  # Enable Markdown for clickable links
+            parse_mode='Markdown'  # For user and developer mentions
         )
-
+        
     except Exception as e:
-        logging.error(f"Start error: {str(e)}")
+        import logging
+        logging.error(f"Error in start command: {str(e)}")
         update.message.reply_text("ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ Qᴜɪᴢ ʙᴏᴛ! Use /help for commands.")
 
 def help_command(update: Update, context: CallbackContext) -> None:
