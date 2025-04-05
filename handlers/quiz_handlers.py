@@ -53,37 +53,39 @@ def start(update: Update, context: CallbackContext) -> None:
             # If image sending fails, continue with just the text
             pass
         
-        # Create a styled welcome message with fancy double-line borders
-        # Using special Unicode characters for "bold-like" text
+        # Create a styled welcome message using Markdown for bold text
         welcome_message = (
-            "╔══════════════════════════════════╗\n"
-            "║       🎓  𝗔𝗗𝗩𝗔𝗡𝗖𝗘 𝗤𝗨𝗜𝗭 𝗕𝗢𝗧  🎓      ║\n"
-            "╚══════════════════════════════════╝\n\n"
-            f"𝗛𝗲𝗹𝗹𝗼 {user.first_name}! I'm your interactive quiz companion.\n\n"
-            "📋 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀:\n"
-            "• /start - Show this welcome message\n"
-            "• /help - Get help information\n"
-            "• /list - List available quizzes\n"
-            "• /take [quiz_id] - Start a quiz\n"
-            "• /cancel - Cancel operation\n"
-            "• /results - Get quiz results as PDF\n\n"
-            "🚀 𝗞𝗲𝘆 𝗙𝗲𝗮𝘁𝘂𝗿𝗲𝘀:\n"
-            "• 📝 Multiple choice quizzes\n"
-            "• ⏱️ Custom time limits per question\n"
-            "• 📊 Negative marking for wrong answers\n"
-            "• 📑 PDF generation of results\n"
-            "• 📤 Import/Export quizzes\n\n"
-            "╔══════════════════════════════════╗\n"
-            "║    👨‍💻 Created by: ⭐ @𝗝𝗮𝗮𝘁𝗖𝗼𝗱𝗲𝗿𝗫 ⭐    ║\n"
-            "╚══════════════════════════════════╝\n\n"
+            "====================================\n"
+            "**🎓  ADVANCE QUIZ BOT  🎓**\n"
+            "====================================\n\n"
+            f"Hello **{user.first_name}**! I'm your interactive quiz companion.\n\n"
+            "**Available Commands:**\n"
+            "/start - Show this welcome message\n"
+            "/help - Get help information\n"
+            "/list - List available quizzes\n"
+            "/take [quiz_id] - Start a quiz\n"
+            "/cancel - Cancel operation\n"
+            "/results - Get quiz results as PDF\n\n"
+            "**Key Features:**\n"
+            "• Multiple choice quizzes\n"
+            "• Custom time limits per question\n"
+            "• Negative marking for wrong answers\n"
+            "• PDF generation of results\n"
+            "• Import/Export quizzes\n\n"
+            "====================================\n"
+            "Created by: **@JaatCoderX**\n"
+            "====================================\n\n"
             "Use /list to see available quizzes!"
         )
-        # Send the text welcome message
-        update.message.reply_text(welcome_message)
+        
+        # Send the text welcome message with Markdown formatting
+        update.message.reply_text(welcome_message, parse_mode='Markdown')
+    
     except Exception as e:
         import logging
         logging.error(f"Error in start command: {str(e)}")
         update.message.reply_text("Welcome to the Quiz Bot! Use /help to see available commands.")
+        
 
 def help_command(update: Update, context: CallbackContext) -> None:
     """Send a help message when the command /help is issued."""
