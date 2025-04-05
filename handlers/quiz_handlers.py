@@ -44,13 +44,13 @@ def start(update: Update, context: CallbackContext) -> None:
         user_mention = f"[{user.first_name}](tg://user?id={user.id})"
         creator_mention = "[𝗝𝗮𝗮𝘁𝗖𝗼𝗱𝗲𝗿𝗫🧑‍💻](https://t.me/JaatCoderX)"
 
-        # Make commands clickable with the correct bot username
-        start_cmd = "[/𝘀𝘁𝗮𝗿𝘁](https://t.me/JaatCoderXQuiz_Bot?start=start)"
-        help_cmd = "[/𝗵𝗲𝗹𝗽](https://t.me/JaatCoderXQuiz_Bot?start=help)"
-        list_cmd = "[/𝗹𝗶𝘀𝘁](https://t.me/JaatCoderXQuiz_Bot?start=list)"
-        take_cmd = "[/𝘁𝗮𝗸𝗲](https://t.me/JaatCoderXQuiz_Bot?start=take)"
-        cancel_cmd = "[/𝗰𝗮𝗻𝗰𝗲𝗹](https://t.me/JaatCoderXQuiz_Bot?start=cancel)"
-        results_cmd = "[/𝗿𝗲𝘀𝘂𝗹𝘁𝘀](https://t.me/JaatCoderXQuiz_Bot?start=results)"
+        # Make commands directly clickable (no "?start=" parameter)
+        start_cmd = "[/𝘀𝘁𝗮𝗿𝘁](https://t.me/JaatCoderXQuiz_Bot/start)"
+        help_cmd = "[/𝗵𝗲𝗹𝗽](https://t.me/JaatCoderXQuiz_Bot/help)"
+        list_cmd = "[/𝗹𝗶𝘀𝘁](https://t.me/JaatCoderXQuiz_Bot/list)"
+        take_cmd = "[/𝘁𝗮𝗸𝗲](https://t.me/JaatCoderXQuiz_Bot/take)"
+        cancel_cmd = "[/𝗰𝗮𝗻𝗰𝗲𝗹](https://t.me/JaatCoderXQuiz_Bot/cancel)"
+        results_cmd = "[/𝗿𝗲𝘀𝘂𝗹𝘁𝘀](https://t.me/JaatCoderXQuiz_Bot/results)"
 
         caption = (
             "✧･ﾟ: 🎮 𝐀𝐃𝐕𝐀𝐍𝐂𝐄 𝐐𝐔𝐈𝐙 𝐁𝐎𝐓 🎮 :･ﾟ✧\n\n"
