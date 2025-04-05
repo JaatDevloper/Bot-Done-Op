@@ -78,21 +78,22 @@ def help_command(update: Update, context: CallbackContext) -> None:
     """Send a help message when the command /help is issued."""
     try:
         help_text = (
-            "✧･ﾟ: 🔍 HELP CENTER 🔍 :･ﾟ✧\n\n"
-            "Available Commands:\n\n"
-            "➤ /start - Start the bot\n"
-            "➤ /help - Show this help message\n"
-            "➤ /list - List all available quizzes\n"
-            "➤ /take (quiz_id) - Take a specific quiz\n"
-            "➤ /results - Get your quiz results\n"
-            "➤ /admin - Show admin commands (admin only)\n\n"
-            "💡 Tips:\n"
-            "• Use /list to see available quizzes\n"
-            "• Check /results after completing a quiz\n"
-            "• Use /cancel to stop any ongoing operation\n\n"
-            "✨ Thank you for using Advance Quiz Bot! ✨"
+            "✧･ﾟ: 🔍 𝗛𝗘𝗟𝗣 𝗖𝗘𝗡𝗧𝗘𝗥 🔍 :･ﾟ✧\n\n"
+            "𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀:\n\n"
+            "➤ /start - 𝗦𝘁𝗮𝗿𝘁 𝘁𝗵𝗲 𝗯𝗼𝘁\n"
+            "➤ /help - 𝗦𝗵𝗼𝘄 𝘁𝗵𝗶𝘀 𝗵𝗲𝗹𝗽 𝗺𝗲𝘀𝘀𝗮𝗴𝗲\n"
+            "➤ /list - 𝗟𝗶𝘀𝘁 𝗮𝗹𝗹 𝗮𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗾𝘂𝗶𝘇𝘇𝗲𝘀\n"
+            "➤ /take - 𝗧𝗮𝗸𝗲 𝗮 𝘀𝗽𝗲𝗰𝗶𝗳𝗶𝗰 𝗾𝘂𝗶𝘇\n"
+            "➤ /results - 𝗚𝗲𝘁 𝘆𝗼𝘂𝗿 𝗾𝘂𝗶𝘇 𝗿𝗲𝘀𝘂𝗹𝘁𝘀\n"
+            "➤ /admin - 𝗦𝗵𝗼𝘄 𝗮𝗱𝗺𝗶𝗻 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀\n\n"
+            "💡 𝗧𝗶𝗽𝘀:\n"
+            "• 𝗨𝘀𝗲 /list 𝘁𝗼 𝘀𝗲𝗲 𝗮𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗾𝘂𝗶𝘇𝘇𝗲𝘀\n"
+            "• 𝗖𝗵𝗲𝗰𝗸 /results 𝗮𝗳𝘁𝗲𝗿 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗶𝗻𝗴 𝗮 𝗾𝘂𝗶𝘇\n"
+            "• 𝗨𝘀𝗲 /cancel 𝘁𝗼 𝘀𝘁𝗼𝗽 𝗮𝗻𝘆 𝗼𝗻𝗴𝗼𝗶𝗻𝗴 𝗼𝗽𝗲𝗿𝗮𝘁𝗶𝗼𝗻\n\n"
+            "✨ 𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 𝗳𝗼𝗿 𝘂𝘀𝗶𝗻𝗴 𝗔𝗱𝘃𝗮𝗻𝗰𝗲 𝗤𝘂𝗶𝘇 𝗕𝗼𝘁! ✨"
         )
         
+        # Simple reply_text without parse_mode to avoid formatting issues
         update.message.reply_text(help_text)
     except Exception as e:
         logging.error(f"Error in help command: {str(e)}")
