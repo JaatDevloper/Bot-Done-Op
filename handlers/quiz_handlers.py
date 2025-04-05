@@ -42,30 +42,30 @@ def start(update: Update, context: CallbackContext) -> None:
 
         caption = (
             "============================\n"
-            "**ADVANCE QUIZ BOT**\n"
+            "**ADVANCE QUIZ BOT**\n"  # Bold title
             "============================\n\n"
-            f"Welcome, **{user.first_name}**! I'm your quiz companion.\n\n"
-            "**Commands:**\n"
+            f"Welcome, **{user.first_name}**! I'm your quiz companion.\n\n"  # Bold user name
+            "**Commands:**\n"  # Bold "Commands"
             "/start - Show this message\n"
             "/help - Help info\n"
             "/list - List quizzes\n"
             "/take [id] - Start quiz\n"
             "/cancel - Cancel quiz\n"
             "/results - Get PDF results\n\n"
-            "**Features:**\n"
+            "**Features:**\n"  # Bold "Features"
             "• MCQ quizzes\n"
             "• Timers & penalties\n"
             "• PDF result generation\n"
             "• Import/Export quizzes\n\n"
             "============================\n"
-            "Created by: @JaatCoderX\n"
+            "Created by: **@JaatCoderX**\n"  # Bold creator name
             "============================"
         )
 
         update.message.reply_photo(
             photo=welcome_image_url,
             caption=caption,
-            parse_mode='Markdown'
+            parse_mode='Markdown'  # Ensure markdown parsing
         )
 
     except Exception as e:
