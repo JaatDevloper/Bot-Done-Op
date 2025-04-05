@@ -35,46 +35,46 @@ logger = logging.getLogger(__name__)
 active_sessions = {}
 
 def start(update: Update, context: CallbackContext) -> None:
-    """Send a welcome message with image when the command /start is issued."""
+    """Send a simple welcome message when the command /start is issued."""
     try:
         user = update.effective_user
 
-        # Send the welcome image
+        # Optional: send welcome image
         welcome_image_url = "https://i.ibb.co/CsB6QYM/picture-ink.jpg"
         try:
             update.message.reply_photo(
                 photo=welcome_image_url,
-                caption=f"Welcome to Advance Quiz Bot, {user.first_name}! 🎓"
+                caption=f"Welcome to Advance Quiz Bot, {user.first_name}!"
             )
         except Exception as img_error:
-            logging.error(f"Error sending welcome image: {str(img_error)}")
+            logging.error(f"Error sending image: {img_error}")
 
-        # MarkdownV2 formatted welcome message with "borders"
+        # Simple plain text welcome message
         welcome_message = (
-            "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
-            "*🎓  ADVANCE QUIZ BOT  🎓*\n"
-            "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n\n"
-            f"Hello *{user.first_name}*\\! I'm your interactive quiz companion\\.\n\n"
-            "*Available Commands:*\n"
-            "`/start` \\- Show this welcome message\n"
-            "`/help` \\- Get help information\n"
-            "`/list` \\- List available quizzes\n"
-            "`/take [quiz_id]` \\- Start a quiz\n"
-            "`/cancel` \\- Cancel operation\n"
-            "`/results` \\- Get quiz results as PDF\n\n"
-            "*Key Features:*\n"
-            "• Multiple choice quizzes\n"
-            "• Custom time limits per question\n"
-            "• Negative marking for wrong answers\n"
-            "• PDF generation of results\n"
-            "• Import/Export quizzes\n\n"
-            "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            "Created by: *@JaatCoderX*\n"
-            "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "_Use /list to see available quizzes!_"
+            "==============================\n"
+            "   ADVANCE QUIZ BOT\n"
+            "==============================\n\n"
+            f"Hello {user.first_name}! I'm your quiz companion.\n\n"
+            "Available Commands:\n"
+            "/start - Show this message\n"
+            "/help - Help information\n"
+            "/list - List available quizzes\n"
+            "/take [quiz_id] - Start a quiz\n"
+            "/cancel - Cancel current quiz\n"
+            "/results - Get your results in PDF\n\n"
+            "Features:\n"
+            "- Multiple choice quizzes\n"
+            "- Time limits per question\n"
+            "- Negative marking\n"
+            "- PDF result generation\n"
+            "- Import/Export quizzes\n\n"
+            "==============================\n"
+            "Created by: @JaatCoderX\n"
+            "==============================\n\n"
+            "Use /list to begin a quiz!"
         )
 
-        update.message.reply_text(welcome_message, parse_mode='MarkdownV2')
+        update.message.reply_text(welcome_message)
 
     except Exception as e:
         logging.error(f"Error in start command: {str(e)}")
