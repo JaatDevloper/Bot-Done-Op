@@ -42,23 +42,23 @@ def start(update: Update, context: CallbackContext) -> None:
 
         caption = (
             "============================\n"
-            "**ADVANCE QUIZ BOT**\n"  # Bold title
+            "ADVANCE QUIZ BOT\n"
             "============================\n\n"
-            f"Welcome, **{user.first_name}**! I'm your quiz companion.\n\n"  # Bold user name
-            "**Commands:**\n"  # Bold "Commands"
+            f"Welcome, {user.first_name}! I'm your quiz companion.\n\n"
+            "Commands:\n"
             "/start - Show this message\n"
             "/help - Help info\n"
             "/list - List quizzes\n"
             "/take [id] - Start quiz\n"
             "/cancel - Cancel quiz\n"
             "/results - Get PDF results\n\n"
-            "**Features:**\n"  # Bold "Features"
+            "Features:\n"
             "• MCQ quizzes\n"
             "• Timers & penalties\n"
             "• PDF result generation\n"
             "• Import/Export quizzes\n\n"
             "============================\n"
-            "Created by: **@JaatCoderX**\n"  # Bold creator name
+            "Created by: @JaatCoderX\n"
             "============================"
         )
 
