@@ -71,7 +71,7 @@ def start(update: Update, context: CallbackContext) -> None:
     except Exception as e:
         logging.error(f"Start error: {str(e)}")
         update.message.reply_text("ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ Qᴜɪᴢ ʙᴏᴛ! Use /help for commands.")
-        
+
 def help_command(update: Update, context: CallbackContext) -> None:
     """Send a help message when the command /help is issued."""
     commands = [
