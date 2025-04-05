@@ -34,25 +34,32 @@ quiz_creation_data = {}
 
 def admin_command(update: Update, context: CallbackContext) -> None:
     """Show admin commands when /admin is issued."""
-    user_id = update.effective_user.id
-    
-    # Check if the user is an admin
-    if user_id not in ADMIN_USERS:
-        update.message.reply_text("Sorry, you don't have admin privileges.")
-        return
-    
-    # List of admin commands
-    commands = [
-        "/create - Create a new quiz",
-        "/adminhelp - Show detailed admin help",
-        "/edittime (quiz_id) - Edit quiz time limit",
-        "/editquestiontime (quiz_id) (question_index) (time_limit) - Edit time limit for a specific question",
-        "/import - Import a quiz from JSON",
-    ]
-    
-    update.message.reply_text(
-        'Admin Commands:\n\n' + '\n'.join(commands)
-    )
+    try:
+        user_id = update.effective_user.id
+        
+        # Check if the user is an admin
+        if user_id not in ADMIN_USERS:
+            update.message.reply_text("𝗦𝗼𝗿𝗿𝘆, 𝘆𝗼𝘂 𝗱𝗼𝗻'𝘁 𝗵𝗮𝘃𝗲 𝗮𝗱𝗺𝗶𝗻 𝗽𝗿𝗶𝘃𝗶𝗹𝗲𝗴𝗲𝘀.")
+            return
+        
+        admin_text = (
+            "✧･ﾟ: 🛠️ 𝗔𝗗𝗠𝗜𝗡 𝗣𝗔𝗡𝗘𝗟 🛠️ :･ﾟ✧\n\n"
+            "𝗔𝗱𝗺𝗶𝗻 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀:\n\n"
+            "➤ /create - 𝗖𝗿𝗲𝗮𝘁𝗲 𝗮 𝗻𝗲𝘄 𝗾𝘂𝗶𝘇\n"
+            "➤ /adminhelp - 𝗦𝗵𝗼𝘄 𝗱𝗲𝘁𝗮𝗶𝗹𝗲𝗱 𝗮𝗱𝗺𝗶𝗻 𝗵𝗲𝗹𝗽\n"
+            "➤ /edittime - 𝗘𝗱𝗶𝘁 𝗾𝘂𝗶𝘇 𝘁𝗶𝗺𝗲 𝗹𝗶𝗺𝗶𝘁\n"
+            "➤ /editquestiontime - 𝗘𝗱𝗶𝘁 𝘁𝗶𝗺𝗲 𝗹𝗶𝗺𝗶𝘁 𝗳𝗼𝗿 𝗮 𝘀𝗽𝗲𝗰𝗶𝗳𝗶𝗰 𝗾𝘂𝗲𝘀𝘁𝗶𝗼𝗻\n"
+            "➤ /import - 𝗜𝗺𝗽𝗼𝗿𝘁 𝗮 𝗾𝘂𝗶𝘇 𝗳𝗿𝗼𝗺 𝗝𝗦𝗢𝗡\n\n"
+            "💡 𝗔𝗱𝗺𝗶𝗻 𝗧𝗶𝗽𝘀:\n"
+            "• 𝗨𝘀𝗲 /create 𝘁𝗼 𝘀𝘁𝗮𝗿𝘁 𝗮 𝗴𝘂𝗶𝗱𝗲𝗱 𝗾𝘂𝗶𝘇 𝗰𝗿𝗲𝗮𝘁𝗶𝗼𝗻 𝗽𝗿𝗼𝗰𝗲𝘀𝘀\n"
+            "• 𝗨𝘀𝗲 /import 𝘁𝗼 𝗾𝘂𝗶𝗰𝗸𝗹𝘆 𝗮𝗱𝗱 𝗺𝘂𝗹𝘁𝗶𝗽𝗹𝗲 𝗾𝘂𝗲𝘀𝘁𝗶𝗼𝗻𝘀\n\n"
+            "✨ 𝗔𝗱𝗺𝗶𝗻 𝗔𝗰𝗰𝗲𝘀𝘀 𝗚𝗿𝗮𝗻𝘁𝗲𝗱 ✨"
+        )
+        
+        update.message.reply_text(admin_text)
+    except Exception as e:
+        logging.error(f"Error in admin command: {str(e)}")
+        update.message.reply_text("Admin Commands:\n\n/create\n/adminhelp\n/edittime\n/editquestiontime\n/import")
 
 def admin_help(update: Update, context: CallbackContext) -> None:
     """Show detailed admin help."""
