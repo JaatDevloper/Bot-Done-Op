@@ -39,28 +39,32 @@ def start(update: Update, context: CallbackContext) -> None:
     try:
         user = update.effective_user
         
-        # Create a simpler welcome message with basic formatting
+        # Create a stylish welcome message with borders and formatting
         welcome_message = (
-            "🎓 Welcome to Telegram Quiz Bot! 🎓\n\n"
-            f"Hello {user.first_name}! I'm your interactive quiz companion.\n\n"
-            "🚀 Key Features:\n"
-            "• 📋 Multiple choice quizzes\n"
-            "• ⏱️ Custom time limits per question\n"
-            "• 📊 Negative marking for wrong answers\n"
-            "• 📑 PDF generation of results\n"
-            "• 📤 Import/Export quizzes\n\n"
-            "📝 Commands:\n"
+            "╔══════════════════════════════╗\n"
+            "║   <b>🎓 TELEGRAM QUIZ BOT 🎓</b>   ║\n"
+            "╚══════════════════════════════╝\n\n"
+            f"Hello <b>{user.first_name}</b>! I'm your interactive quiz companion.\n\n"
+            "<b>🚀 Key Features:</b>\n"
+            "• <b>📋</b> Multiple choice quizzes\n"
+            "• <b>⏱️</b> Custom time limits per question\n"
+            "• <b>📊</b> Negative marking for wrong answers\n"
+            "• <b>📑</b> PDF generation of results\n"
+            "• <b>📤</b> Import/Export quizzes\n\n"
+            "<b>📝 Commands:</b>\n"
             "• /start - Show this welcome message\n"
             "• /help - Get help information\n"
             "• /list - List available quizzes\n"
             "• /take [quiz_id] - Start a quiz\n"
             "• /cancel - Cancel operation\n"
             "• /results - Get quiz results as PDF\n\n"
-            "👨‍💻 Created by: @JaatCoderX\n\n"
+            "╔══════════════════════════════╗\n"
+            "║ <b>Created by:</b> <i>『 @𝐉𝐚𝐚𝐭𝐂𝐨𝐝𝐞𝐫𝐗 』</i> ║\n"
+            "╚══════════════════════════════╝\n\n"
             "Use /list to see available quizzes!"
         )
-        # Use plain text for compatibility
-        update.message.reply_text(welcome_message)
+        # Use HTML parsing for rich formatting
+        update.message.reply_text(welcome_message, parse_mode=ParseMode.HTML)
     except Exception as e:
         import logging
         logging.error(f"Error in start command: {str(e)}")
