@@ -35,50 +35,42 @@ logger = logging.getLogger(__name__)
 active_sessions = {}
 
 def start(update: Update, context: CallbackContext) -> None:
-    """Send a welcome message with an image when the command /start is issued."""
     try:
         user = update.effective_user
 
-        # Send the welcome image
         welcome_image_url = "https://i.imgur.com/jFeArfJ.jpeg"
-        try:
-            update.message.reply_photo(
-                photo=welcome_image_url,
-                caption=f"Welcome to Advance Quiz Bot, {user.first_name}!"
-            )
-        except Exception as img_error:
-            logging.error(f"Error sending image: {img_error}")
 
-        # Simple plain text welcome message
-        welcome_message = (
-            "==============================\n"
-            "   ADVANCE QUIZ BOT\n"
-            "==============================\n\n"
-            f"Hello {user.first_name}! I'm your quiz companion.\n\n"
-            "Available Commands:\n"
+        caption = (
+            "============================\n"
+            "**ADVANCE QUIZ BOT**\n"
+            "============================\n\n"
+            f"Welcome, **{user.first_name}**! I'm your quiz companion.\n\n"
+            "**Commands:**\n"
             "/start - Show this message\n"
-            "/help - Help information\n"
-            "/list - List available quizzes\n"
-            "/take [quiz_id] - Start a quiz\n"
-            "/cancel - Cancel current quiz\n"
-            "/results - Get your results in PDF\n\n"
-            "Features:\n"
-            "- Multiple choice quizzes\n"
-            "- Time limits per question\n"
-            "- Negative marking\n"
-            "- PDF result generation\n"
-            "- Import/Export quizzes\n\n"
-            "==============================\n"
+            "/help - Help info\n"
+            "/list - List quizzes\n"
+            "/take [id] - Start quiz\n"
+            "/cancel - Cancel quiz\n"
+            "/results - Get PDF results\n\n"
+            "**Features:**\n"
+            "• MCQ quizzes\n"
+            "• Timers & penalties\n"
+            "• PDF result generation\n"
+            "• Import/Export quizzes\n\n"
+            "============================\n"
             "Created by: @JaatCoderX\n"
-            "==============================\n\n"
-            "Use /list to begin a quiz!"
+            "============================"
         )
 
-        update.message.reply_text(welcome_message)
+        update.message.reply_photo(
+            photo=welcome_image_url,
+            caption=caption,
+            parse_mode='Markdown'
+        )
 
     except Exception as e:
-        logging.error(f"Error in start command: {str(e)}")
-        update.message.reply_text("Welcome to the Quiz Bot! Use /help to see available commands.")
+        logging.error(f"Start error: {str(e)}")
+        update.message.reply_text("Welcome to the Quiz Bot! Use /help for commands.")
         
 def help_command(update: Update, context: CallbackContext) -> None:
     """Send a help message when the command /help is issued."""
