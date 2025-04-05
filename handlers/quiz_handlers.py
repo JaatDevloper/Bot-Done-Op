@@ -41,31 +41,26 @@ def start(update: Update, context: CallbackContext) -> None:
         welcome_image_url = "https://i.imgur.com/jFeArfJ.jpeg"
 
         caption = (
-            "============================\n"
-            "ADVANCE QUIZ BOT\n"
-            "============================\n\n"
-            f"Welcome, {user.first_name}! I'm your quiz companion.\n\n"
-            "Commands:\n"
+            "🌟 𝗔𝗗𝗩𝗔𝗡𝗖𝗘 𝗤𝗨𝗜𝗭 𝗕𝗢𝗧 🌟\n\n"
+            f"𝙒𝙚𝙡𝙘𝙤𝙢𝙚, {user.first_name}! 𝙄'𝙢 𝙮𝙤𝙪𝙧 𝙦𝙪𝙞𝙯 𝙘𝙤𝙢𝙥𝙖𝙣𝙞𝙤𝙣.\n\n"
+            "✨ 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬:\n"
             "/start - Show this message\n"
             "/help - Help info\n"
             "/list - List quizzes\n"
             "/take [id] - Start quiz\n"
             "/cancel - Cancel quiz\n"
             "/results - Get PDF results\n\n"
-            "Features:\n"
-            "• MCQ quizzes\n"
-            "• Timers & penalties\n"
-            "• PDF result generation\n"
-            "• Import/Export quizzes\n\n"
-            "============================\n"
-            "Created by: @JaatCoderX\n"
-            "============================"
+            "✨ 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬:\n"
+            "• 𝙼𝙲𝚀 𝚚𝚞𝚒𝚣𝚣𝚎𝚜\n"
+            "• 𝚃𝚒𝚖𝚎𝚛𝚜 & 𝚙𝚎𝚗𝚊𝚕𝚝𝚒𝚎𝚜\n"
+            "• 𝙿𝙳𝙵 𝚛𝚎𝚜𝚞𝚕𝚝 𝚐𝚎𝚗𝚎𝚛𝚊𝚝𝚒𝚘𝚗\n"
+            "• 𝙸𝚖𝚙𝚘𝚛𝚝/𝙴𝚡𝚙𝚘𝚛𝚝 𝚚𝚞𝚒𝚣𝚣𝚎𝚜\n\n"
+            "𝘾𝙧𝙚𝙖𝙩𝙚𝙙 𝙗𝙮: @JaatCoderX 🚀"
         )
 
         update.message.reply_photo(
             photo=welcome_image_url,
-            caption=caption,
-            parse_mode='Markdown'  # Ensure markdown parsing
+            caption=caption
         )
 
     except Exception as e:
