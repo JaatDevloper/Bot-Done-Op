@@ -1196,7 +1196,7 @@ def set_question_correct_answer(update: Update, context: CallbackContext) -> Non
         if not context.args:
             update.message.reply_text(
                 "Please provide the option number: /correct <option_number>\n"
-                "For example, /correct2 will set the second option as correct."
+                "For example, /correct 2 will set the second option as correct."
             )
             return
         
